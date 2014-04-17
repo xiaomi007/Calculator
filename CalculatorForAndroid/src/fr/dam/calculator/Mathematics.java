@@ -5,7 +5,7 @@ public class Mathematics {
 	public static float addition(float a, float b){
 		return a + b;
 	}
-	
+	 
 	public static float soustraction(float a, float b){
 		return a - b;
 	}
@@ -15,9 +15,7 @@ public class Mathematics {
 	}
 	
 	public static float division(float a, float b){
-		if(b !=0){
-			return 0;
-		}
+		
 		return a/b;
 	}
 	

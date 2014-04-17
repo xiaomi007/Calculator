@@ -114,7 +114,7 @@ public class CalculatorModel implements Observable, OnClickListener {
 		String str = getOperation();
 		String numbers[] = null;
 		String operands[] = null;
-		String regForNumber = "[+|-|*|/]";
+		String regForNumber = "[+|\\-|*|/|%|]";// "[+|-|*|/]";
 		int index = 0;
 		int numbersLength = 0;
 		float a = 0;
@@ -124,6 +124,9 @@ public class CalculatorModel implements Observable, OnClickListener {
 		String divide = "/";
 		String multiply = "*";
 		
+		str = str.replace('x', '*');
+		Log.d("ope", "str = " + str);
+		
 		//Extraction of the numbers into a String array numbers[]
 		numbers = str.split(regForNumber);
 		//To know the number of numbers
@@ -131,7 +134,7 @@ public class CalculatorModel implements Observable, OnClickListener {
 		
 		//Initialize the String array operands, take numbersLength minus one
 		operands = new String[numbersLength-1];
-
+		Log.d("ope","operand length " + operands.length);
 		for (int i = 0, j = 0; i < numbers.length; i++) {
 
 			index += numbers[i].length();

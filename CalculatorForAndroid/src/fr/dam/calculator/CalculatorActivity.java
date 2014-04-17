@@ -8,10 +8,13 @@ import android.widget.TextView;
 
 public class CalculatorActivity extends Activity{
 
-	RelativeLayout 	rLayout 	= null;
+	//invoke object null to optimize the memory allocation.
+	RelativeLayout 	rLayout 	= null; //Optimization of XML inflate
+	CalculatorModel calculatorModel 	= null; //Model for the calculator
+	TextView	displayResult = null; //Text which appears on the screen
+	String	operation	= null;//Intern String to know the operation
 	
-	CalculatorModel calculatorModel 	= null;
-
+	//Creation of the calculator's buttons
 	Button	zero	= null;
 	Button	one		= null;
 	Button	two		= null;
@@ -22,6 +25,7 @@ public class CalculatorActivity extends Activity{
 	Button	seven	= null;
 	Button	eight	= null;
 	Button	nine	= null;
+	
 	Button	clear	= null;
 	Button	dot		= null;
 	Button	equal	= null;
@@ -30,15 +34,6 @@ public class CalculatorActivity extends Activity{
 	Button	multiply= null;
 	Button	divide	= null;
 
-	TextView	displayResult = null;
-
-	String	operation	= null;
-//	String	first		= null;
-//	String	second		= null;
-//	int		digit		= 0;
-//	String numbers[] 	= null;
-//	String operand[]	= null;
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -46,11 +41,6 @@ public class CalculatorActivity extends Activity{
 		setContentView(rLayout);
 
 		calculatorModel = new CalculatorModel();
-		
-
-//		first = "";
-//		second = "";
-		
 
 		zero 	= (Button) findViewById(R.id.zero);
 		one 	= (Button) findViewById(R.id.one);
@@ -62,6 +52,7 @@ public class CalculatorActivity extends Activity{
 		seven 	= (Button) findViewById(R.id.seven);
 		eight 	= (Button) findViewById(R.id.eight);
 		nine 	= (Button) findViewById(R.id.nine);
+		
 		clear 	= (Button) findViewById(R.id.clear);
 		dot 	= (Button) findViewById(R.id.dot);
 		equal 	= (Button) findViewById(R.id.equal);
@@ -69,29 +60,29 @@ public class CalculatorActivity extends Activity{
 		minus 	= (Button) findViewById(R.id.minus);
 		multiply= (Button) findViewById(R.id.multiply);
 		divide 	= (Button) findViewById(R.id.divide);
-
+ 
 		displayResult = (TextView) findViewById(R.id.displayResult);
-
-
-		
+	
 		// Listeners
-		zero.setOnClickListener(calculatorModel);
-		one.setOnClickListener(calculatorModel);
-		two.setOnClickListener(calculatorModel);
-		three.setOnClickListener(calculatorModel);
-		four.setOnClickListener(calculatorModel);
-		five.setOnClickListener(calculatorModel);
-		six.setOnClickListener(calculatorModel);
-		seven.setOnClickListener(calculatorModel);
-		eight.setOnClickListener(calculatorModel);
-		nine.setOnClickListener(calculatorModel);
-		equal.setOnClickListener(calculatorModel);
-		add.setOnClickListener(calculatorModel);
-		minus.setOnClickListener(calculatorModel);
+		zero.setOnClickListener(	calculatorModel);
+		one.setOnClickListener(		calculatorModel);
+		two.setOnClickListener(		calculatorModel);
+		three.setOnClickListener(	calculatorModel);
+		four.setOnClickListener(	calculatorModel);
+		five.setOnClickListener(	calculatorModel);
+		six.setOnClickListener(		calculatorModel);
+		seven.setOnClickListener(	calculatorModel);
+		eight.setOnClickListener(	calculatorModel);
+		nine.setOnClickListener(	calculatorModel);
+		
+		clear.setOnClickListener(	calculatorModel);
+		dot.setOnClickListener(		calculatorModel);
+		equal.setOnClickListener(	calculatorModel);
+		add.setOnClickListener(		calculatorModel);
+		minus.setOnClickListener(	calculatorModel);
 		multiply.setOnClickListener(calculatorModel);
-		divide.setOnClickListener(calculatorModel);
-		clear.setOnClickListener(calculatorModel);
-		dot.setOnClickListener(calculatorModel);
+		divide.setOnClickListener(	calculatorModel);
+		
 		
 		this.calculatorModel.addObserver(new Observer() {
 			
@@ -104,97 +95,3 @@ public class CalculatorActivity extends Activity{
 	}
 
 };
-
-
-
-//	private OnClickListener numberListener = new OnClickListener() {
-//
-//       @Override
-//       public void onClick(View v) {
-//           switch (v.getId()) {
-//		   case R.id.zero:
-//			   // displayResult.setText(R.string.zero);
-//			   operation += "0";
-//			   break;
-//
-//		   case R.id.one:
-//			   // displayResult.setText(R.string.one);
-//			   operation += "1";
-//			   break;
-//
-//		   case R.id.two:
-//			   // displayResult.setText(R.string.two);
-//			   operation += "2";
-//			   break;
-//
-//		   case R.id.three:
-//			   // displayResult.setText(R.string.three);
-//			   operation += "3";
-//			   break;
-//
-//		   case R.id.four:
-//			   // displayResult.setText(R.string.four);
-//			   operation += "4";
-//			   break;
-//
-//		   case R.id.five:
-//			   // displayResult.setText(R.string.five);
-//			   operation += "5";
-//			   break;
-//
-//		   case R.id.six:
-//			   // displayResult.setText(R.string.six);
-//			   operation += "6";
-//			   break;
-//
-//		   case R.id.seven:
-//			   // displayResult.setText(R.string.seven);
-//			   operation += "7";
-//			   break;
-//
-//		   case R.id.eight:
-//			   // displayResult.setText(R.string.eight);
-//			   operation += "8";
-//			   break;
-//
-//		   case R.id.nine:
-//			   // displayResult.setText(R.string.nine);
-//			   operation += "9";
-//			   break;
-//
-//		   case R.id.add:
-//			  
-//			   operation += "+";
-//			   break;
-//
-//			   
-//			   
-//		   case R.id.equal:
-//			   equality(operation);
-//			   operation += "=";
-//			   break;
-//		   default:
-//			   displayResult.setText("error");
-//			   
-//			   break;
-//		   }
-//           		if(!(operation.indexOf("=") >0))
-//        	   displayResult.setText(operation);
-//       }
-//
-//	};
-//	
-//       
-//	private void equality(String operation) {
-//        String first = null;
-//        String second = null;
-//        String addi = "+";
-//        float resultat = 0;
-//         
-//        first = operation.substring(0, operation.indexOf(addi));	 
-//        second = operation.substring(operation.indexOf(addi)+1);
-//        resultat = Float.valueOf(first) + Float.valueOf(second);
-//        displayResult.setText("");
-//        displayResult.setText(String.valueOf(resultat));
-//	}
-//};
